@@ -1,0 +1,117 @@
+{% extends 'bootstrap/base.html' %}
+{% block content %}
+<title>Admin Dashboard</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body {font-family: "Lato", sans-serif;}
+
+.sidebar {
+  height: 100%;
+  width: 160px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  padding-top: 16px;
+}
+
+.sidebar a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 20px;
+  color: #818181;
+  display: block;
+}
+
+.sidebar a:hover {
+  color: #f1f1f1;
+}
+
+.main {
+  margin-left: 160px; /* Same as the width of the sidenav */
+  padding: 0px 10px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidebar {padding-top: 15px;}
+  .sidebar a {font-size: 18px;}
+}
+</style>
+
+<body>
+
+    <div class="sidebar">
+      <a href="#home"><i class="fa fa-fw fa-home"></i> Home</a>
+      <a href="#users"><i class="fa fa-fw fa-user"></i> Users</a>
+      <a href="#analytics"><i class="fa fa-line-chart"></i> Analytics</a>
+      <a href="{{ url_for('home') }}"><i class="fa fa-fw fa-user"></i> Log Out</a>
+    </div>
+
+    <div class="main">
+        <h2 class="text-center">Welcome Admin <span><i class="fa fa-fw fa-user"></i></span></h2>
+        <h4>Smart Farm Registered Users</h4>
+          <table class="table" id="users">
+            <thead class="thead-dark">
+              <tr>
+                  <th>Last Name</th>
+                  <th>First Name</th>
+                  <th>Name of Farm</th>
+                  <th>Username</th>
+                  <th>Password</th>
+              </tr>
+            </thead>
+            <tbody>
+            {% for row in rows %}
+                <tr>
+                  <td>{{row["last_name"]}}</td>
+                  <td>{{row["first_name"]}}</td>
+                  <td>{{row["farm_name"]}}</td>
+                  <td>{{row["username"]}}</td>
+                  <td>{{row["password"]}}</td>
+                </tr>
+            {% endfor %}
+
+            </tbody>
+          </table>
+        <hr/>
+
+        <h4>Smart Farm User Prediction </h4>
+          <table class="table" id="analytics">
+            <thead class="thead-dark">
+              <tr>
+                  <th>PH</th>
+                  <th>Nitrogen</th>
+                  <th>Phosphorus</th>
+                  <th>Calcium</th>
+                  <th>Organic Carbon</th>
+                  <th>Particles</th>
+                  <th>Water Holding Capacity</th>
+                  <th>Soil Type</th>
+                  <th>prediction</th>
+              </tr>
+            </thead>
+            <tbody>
+            {% for info in data %}
+                <tr>
+                    <td>{{info["pH"]}}</td>
+                    <td>{{info["N"]}}</td>
+                    <td>{{info["P"]}}</td>
+                    <td>{{info["K"]}}</td>
+                    <td>{{info["OC"]}}</td>
+                    <td>{{info["Particles"]}}</td>
+                    <td>{{info["Water_holding_content"]}}</td>
+                    <td>{{info["Soil_type"]}}</td>
+                    <td>{{info["prediction"]}}</td>
+                </tr>
+            {% endfor %}
+
+            </tbody>
+          </table>
+    </div>
+<div class="main-content">
+</div>
+</body>
+{% endblock %}
