@@ -1,0 +1,128 @@
+{% extends 'bootstrap/base.html' %}
+{% block content %}
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+          integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    <style rel="stylesheet" type="text/css" media="screen">
+            @import url('https://fonts.googleapis.com/css?family=Lato:400,700');
+            html, body {
+            overflow-x: hidden;
+            font-family: font-family: 'Lato', sans-serif;
+            color: #505962;
+        }
+        /*--- NAVIGATION STYLING --*/
+        .navbar {
+            text-transform: uppercase;
+            font-weight: 700;
+            font-size: .9rem;
+            letter-spacing: .1rem;
+            background: rgba(0, 0, 0, 0.6)!important;
+        }
+         .navbar-nav li {
+            padding-right: .7rem;
+        }
+        .navbar-dark .navbar-nav .nav-link {
+            color: #ffffff;
+            padding-top: .6rem;
+        }
+        .navbar-dark .navbar-nav .nav-link.active,
+        .navbar-dark .navbar-nav .nav-link:hover {
+                    color: #ACDF87;
+        }
+        /*--- LANDING SECTION --*/
+        .carousel-inner img {
+            width: 100%;
+            height: 100%;
+        }
+        .carousel-caption {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        .carousel-caption h1 {
+            color: #505962;
+            font-size: 500%;
+            text-transform: uppercase;
+            text-shadow: 1px 1px 15px #ffffff;
+        }
+        .carousel-caption h3 {
+            color: #505962;
+            font-size: 200%;
+            font-weight: 500;
+            text-shadow: 1px 1px 10px #ffffff;
+            padding-bottom: 1rem;
+        }
+        .btn-outline-light:hover {
+            background-color: #ffffff;
+            border: 1px solid #ffffff;
+        }
+     </style>
+<body data-spy="scroll" data-target="#navbarResponsive">
+<!-- Start Home Section -->
+<div id="home">
+
+    <!-- Navigation  -->
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark sticky-top">
+        <a class="navbar-brand h1" href="#"><img src="/static/img/smartfarm.png" height="35" width="40"/>SMART FARM</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('login') }}">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('register') }}">Register</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('admin') }}">Admin Login</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <!-- End Navigation -->
+
+<!-- Start Landing Page Section-->
+    <!-- styling and adding img is done in the css file-->
+        <div id="slides" class="carousel slide" data-ride="carousel">
+            <ul class="carousel-indicators">
+                <li data-target="#slides" data-slide-to="0" class="active"></li>
+                <li data-target="#slides" data-slide-to="1"></li>
+            </ul>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="/static/img/agric_one.jpg"/>
+                    <div class="carousel-caption">
+                        <h1 class="display-2">Welcome to Smart Farm</h1>
+                        <h3>Precision Agriculture Recommender System</h3>
+                        <p><i>Using AI to improve agriculture</i></p>
+                        <a class="btn btn-outline-light btn-lg" href="{{ url_for('login') }}">Login</a>
+                        <a class="btn btn-outline-light btn-lg" href="{{ url_for('register') }}">Register</a>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="/static/img/agric_two.jpg"/>
+                    <div class="carousel-caption">
+                        <h1 class="display-2">Welcome to Smart Farm</h1>
+                        <h3>Precision Agriculture Recommender System</h3>
+                        <p><i>Using AI to improve agriculture</i></p>
+                        <a class="btn btn-outline-light btn-lg" href="{{ url_for('login') }}">Login</a>
+                        <a class="btn btn-outline-light btn-lg" href="{{ url_for('register') }}">Register</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+<!-- End Landing Page Section-->
+</div>
+<!-- End Home Section-->
+
+
+<!-- footer Section -->
+<div class="offset text-center">
+<footer class="container">
+  <p>&copy; <i>SpefacTech</i> 2019</p>
+</footer>
+</div>
+</body>
+
+{% endblock%}
