@@ -6,7 +6,7 @@ I used pycharm IDE for the development of this project.
 set up your pycharm IDE, preferably the community edition (its free).
 Open the pipfile, which contains the list of libraries and versions to be installed.
 Run the app.py file.
-Run in your browser
+Run in your browser.
 127.0.0.1:5000
 For admin login:
 Username: admin
