@@ -1,0 +1,53 @@
+{
+  "dataset": {
+    "path": "data\\final_data.csv",
+    "sha256": "4068e9a66d2e8114edc27ff4cb09fae03514c832ee5d294927aefc3c050df864",
+    "source": "unknown_legacy_dataset",
+    "provenance_verified": false,
+    "rows": 999,
+    "features": [
+      "pH",
+      "N",
+      "P",
+      "K",
+      "OC",
+      "Particles",
+      "Water_holding_content",
+      "Soil_type"
+    ],
+    "target": "crop_type",
+    "classes": [
+      "carrot",
+      "coconut",
+      "cotton",
+      "groundnut",
+      "melon",
+      "millet",
+      "potatoes",
+      "rice",
+      "vegetable",
+      "wheat"
+    ]
+  },
+  "validation": {
+    "method": "5-fold stratified cross-validation",
+    "random_state": 50,
+    "selection_order": [
+      "macro_f1_mean",
+      "balanced_accuracy_mean",
+      "accuracy_mean"
+    ]
+  },
+  "selected_model": {
+    "name": "svc_rbf_balanced",
+    "accuracy_mean": 0.37041708542713564,
+    "balanced_accuracy_mean": 0.33934863113850383,
+    "macro_f1_mean": 0.3310370859410249
+  },
+  "warnings": [
+    "Dataset provenance, units, and license are unverified.",
+    "No location, season, yield, or farm identifier is available.",
+    "10 of 10 crop classes occur in only one soil type.",
+    "Metrics should not be interpreted as field performance until the dataset is replaced or validated."
+  ]
+}

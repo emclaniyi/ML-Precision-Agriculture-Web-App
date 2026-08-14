@@ -1,73 +1,16 @@
-{% extends 'bootstrap/base.html' %}
+{% extends 'base.html' %}
+{% block title %}Soil analysis | Smart Farm{% endblock %}
 {% block content %}
-    <title>Crop Recommendation Analysis Form</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-<link href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round" rel="stylesheet">
-
-<style rel="stylesheet" type="text/css" media="screen">
-    .card {
-        box-shadow: -1px 1px 60px 10px black;
-        background: rgb(0,0,0,0.4);
-        color: white;
-    }
-</style>
-
-<body background="/static/img/agric_three.jpg">
-
-    <div class="col-md-6 offset-md-3">
-        <span class="anchor" id="cropRecommender"></span>
-        <hr class="mb-5">
-
-        <!-- form card register -->
-        <div class="card card-outline-secondary">
-            <div class="card-header">
-                <h3 class="mb-0 text-center">Soil Analysis</h3>
-            </div>
-            <div class="card-body">
-                <form class="form" action="{{ url_for('analysis') }}" method="POST">
-                    <div class="form-group">
-                        <label>PH Level (ranging from 1-7)</label>
-                        <input type="number" step="any" class="form-control" name="pH" placeholder="pH Level" required="">
-                    </div>
-                    <div class="form-group">
-                        <label>Nitrogen Content - N (mg)</label>
-                        <input type="number" step="any" class="form-control" name="N" placeholder="Nitrogen Content" required="">
-                    </div>
-                    <div class="form-group">
-                        <label>Phosphorus Content - P (mg)</label>
-                        <input type="number" step="any" class="form-control" name="P" placeholder="Phosphorus Content" required="">
-                    </div>
-                    <div class="form-group">
-                        <label>Calcium Content - K (mg)</label>
-                        <input type="number" step="any" class="form-control" name="K" placeholder="Calcium Content" required="">
-                    </div>
-                    <div class="form-group">
-                        <label>Organic Carbon - OC (mg)</label>
-                        <input type="number" step="any" class="form-control" name="OC" placeholder="Organic Carbon" required="">
-                    </div>
-                    <div class="form-group">
-                        <label>Particles (micrometer)</label>
-                        <input type="number" step="any" class="form-control" name="Particles" placeholder="Particles" required="">
-                    </div>
-                    <div class="form-group">
-                        <label>Water Holding Capacity (atm))</label>
-                        <input type="number" step="any" class="form-control" name="Water_holding_content" placeholder="Water Holding Capacity" required="">
-                    </div>
-                    <div class="form-group">
-                        <label>Soil Type (Clay: 1, Sandy: 2, Loamy: 3)</label>
-                        <input type="number" step="any" class="form-control" name="Soil_type" placeholder="Enter the corresponding number for each soil type" required="">
-                    </div>
-                    <div class="form-group">
-                        <button type="submit" class="btn btn-outline-success btn-lg float-right" value="analyze">Analyze</button>
-                    </div>
-                </form>
-
-            </div>
-        </div>
-
-    </div>        <!-- /form card register -->
-</body>
-
-
-
+<section class="form-layout"><aside class="form-intro"><div class="eyebrow">Analysis workspace</div><h1>Read the ground beneath your crop.</h1><p>Enter the soil measurements from your field. The model will compare them with its training data and recommend a crop.</p><p>Use measurements from the same field and season for the most useful result.</p></aside>
+  <div class="form-panel"><div class="eyebrow">Soil profile</div><h2>Start an analysis</h2><form action="{{ url_for('analysis') }}" method="post"><input type="hidden" name="csrf_token" value="{{ csrf_token() }}"><div class="form-grid">
+    <div class="field"><label for="pH">pH level</label><input id="pH" type="number" step="any" min="0" max="14" name="pH" required><span class="field-hint">Expected range: 0–14</span></div>
+    <div class="field"><label for="N">Nitrogen (N)</label><input id="N" type="number" step="any" min="0" name="N" required><span class="field-hint">Use your soil test unit</span></div>
+    <div class="field"><label for="P">Phosphorus (P)</label><input id="P" type="number" step="any" min="0" name="P" required></div>
+    <div class="field"><label for="K">Potassium (K)</label><input id="K" type="number" step="any" min="0" name="K" required></div>
+    <div class="field"><label for="OC">Organic carbon (OC)</label><input id="OC" type="number" step="any" min="0" name="OC" required></div>
+    <div class="field"><label for="Particles">Particle measurement</label><input id="Particles" type="number" step="any" min="0" name="Particles" required></div>
+    <div class="field"><label for="Water_holding_content">Water-holding content</label><input id="Water_holding_content" type="number" step="any" min="0" name="Water_holding_content" required></div>
+    <div class="field"><label for="Soil_type">Soil type</label><select id="Soil_type" name="Soil_type" required><option value="">Select soil type</option><option value="clay">Clay</option><option value="Sandy">Sandy</option><option value="loamy">Loamy</option></select></div>
+  </div><div class="form-actions"><a class="btn btn-secondary" href="{{ url_for('home') }}">Cancel</a><button class="btn btn-primary" type="submit">Generate recommendation</button></div></form></div>
+</section>
 {% endblock %}

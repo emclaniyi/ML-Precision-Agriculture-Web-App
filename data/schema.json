@@ -1,0 +1,31 @@
+{
+  "dataset": "final_data.csv",
+  "status": "legacy_unverified_baseline",
+  "source": null,
+  "license": null,
+  "fields": {
+    "pH": {"type": "number", "unit": "unknown", "role": "feature"},
+    "N": {"type": "number", "unit": "unknown", "role": "feature"},
+    "P": {"type": "number", "unit": "unknown", "role": "feature"},
+    "K": {"type": "number", "unit": "unknown", "role": "feature"},
+    "OC": {"type": "number", "unit": "unknown", "role": "feature"},
+    "Particles": {"type": "number", "unit": "unknown", "role": "feature"},
+    "Water_holding_content": {"type": "number", "unit": "unknown", "role": "feature"},
+    "Soil_type": {
+      "type": "category",
+      "allowed_values": ["clay", "Sandy", "loamy"],
+      "role": "feature"
+    },
+    "crop_type": {"type": "category", "role": "target"}
+  },
+  "required_for_future_joining": [
+    "source",
+    "country",
+    "region",
+    "plot_id",
+    "latitude",
+    "longitude",
+    "season",
+    "collection_date"
+  ]
+}

@@ -1,4 +1,4 @@
-"""Small SQLite helpers used by the Flask application."""
+"""SQLite helpers and lightweight schema setup for Smart Farm."""
 
 from pathlib import Path
 import sqlite3
@@ -11,14 +11,21 @@ SOIL_DATABASE = INSTANCE_DIR / "soil_data.db"
 
 
 def get_connection(database_path: Path) -> sqlite3.Connection:
-    """Open a connection to one of the application databases."""
+    """Open a row-addressable SQLite connection."""
     connection = sqlite3.connect(database_path)
+    connection.row_factory = sqlite3.Row
     connection.execute("PRAGMA foreign_keys = ON")
     return connection
 
 
+def _ensure_column(connection: sqlite3.Connection, table: str, name: str, definition: str) -> None:
+    columns = {row[1] for row in connection.execute(f"PRAGMA table_info({table})")}
+    if name not in columns:
+        connection.execute(f"ALTER TABLE {table} ADD COLUMN {name} {definition}")
+
+
 def init_db() -> None:
-    """Create the application tables when they do not already exist."""
+    """Create or upgrade local tables without deleting existing data."""
     INSTANCE_DIR.mkdir(parents=True, exist_ok=True)
 
     with get_connection(USER_DATABASE) as connection:
@@ -32,6 +39,9 @@ def init_db() -> None:
                 password TEXT NOT NULL
             )
             """
+        )
+        connection.execute(
+            "CREATE UNIQUE INDEX IF NOT EXISTS idx_users_username ON users(username)"
         )
 
     with get_connection(SOIL_DATABASE) as connection:
@@ -50,3 +60,5 @@ def init_db() -> None:
             )
             """
         )
+        _ensure_column(connection, "analysis", "username", "TEXT")
+        _ensure_column(connection, "analysis", "created_at", "TEXT")

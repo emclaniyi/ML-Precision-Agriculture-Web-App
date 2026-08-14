@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Smart Farm precision agriculture crop recommendation platform">
+  <title>{% block title %}Smart Farm{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/app.css') }}">
+</head>
+<body>
+  <nav class="site-nav">
+    <a class="brand" href="{{ url_for('home') }}">
+      <img src="{{ url_for('static', filename='img/smartfarm.png') }}" alt="Smart Farm logo">
+      <span class="brand-copy">Smart Farm<small>Precision agriculture</small></span>
+    </a>
+    <div class="nav-links">
+      <a href="{{ url_for('home') }}">Home</a>
+      {% if current_username %}<a href="{{ url_for('crop_recommender') }}">Analysis</a><a href="{{ url_for('logout') }}">Sign out</a>{% endif %}
+      {% if is_admin %}<a href="{{ url_for('dashboard') }}">Dashboard</a>{% endif %}
+      {% if not current_username and not is_admin %}<a href="{{ url_for('login') }}">Sign in</a><a class="nav-cta" href="{{ url_for('register') }}">Create account</a>{% else %}<a class="nav-cta" href="{{ url_for('crop_recommender') }}">Start analysis</a>{% endif %}
+    </div>
+  </nav>
+  <main class="page-shell">
+    {% with messages = get_flashed_messages() %}{% for message in messages %}<div class="flash">{{ message }}</div>{% endfor %}{% endwith %}
+    {% if msg %}<div class="alert">{{ msg }}</div>{% endif %}
+    {% block content %}{% endblock %}
+  </main>
+  <footer class="site-footer"><p>&copy; <i>SpefacTech</i> 2019</p></footer>
+</body>
+</html>
