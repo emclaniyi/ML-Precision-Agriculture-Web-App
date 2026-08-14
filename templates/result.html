@@ -1,0 +1,355 @@
+{% extends 'bootstrap/base.html' %}
+{% block content %}
+	<title>Recommendation</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round" rel="stylesheet">
+    <style rel="stylesheet" type="text/css" media="screen">
+        body {
+            background-color: #eef6ec;
+        }
+    </style>
+<body>
+<!-- jumbotron -->
+<header>
+<div id="about" class="offset">
+    <div class="container-fluid">
+        <div class="row jumbotron jumbotron-fluid">
+            <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 col-xl-12 text-center">
+
+                <h2 class="display-4">Precision Agriculture Recommendation</h2>
+
+                <p class="lead">The goal of the recommender system is to recommend the <em>Crop</em> to planted, the type of
+                <em>fertilizer</em> to be used and the storage process for each crop based on the <em>soil type</em>
+                and other factors.</p>
+
+            </div>
+        </div>
+    </div>
+</div>
+</header>
+<!-- End About Section-->
+       <div class="container-fluid padding">
+            <div class="row text-center padding">
+                <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 col-xl-12 text-center">
+
+                    <div class="results">
+                        {% if prediction == 1%}
+                        <div class="container">
+                          <h2>PREDICTION RESULT</h2>
+                          <div class="table-responsive">
+                          <table class="table">
+                            <thead>
+                              <tr>
+                                  <th>Prediction</th>
+                                  <th>Fertilizer</th>
+                                  <th>Storage Method</th>
+                                  <th>Pesticide</th>
+                                  <th>Suggestion</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                  <td>Carrot</td>
+                                  <td>NPK</td>
+                                  <td>Refrigerator</td>
+                                  <td>Pyrethin Sprays</td>
+                                  <td><p class="lead">For carrot plants, the amount of nitrogen in the fertilizer should be less than potassium and phosphorus. NPK fertilizer with 1-2-2 label can be perfect.
+                            Carrot is a root plant and too much of nitrogen can enhance the growth of leaves and make the carrots hairy and cracked.
+                            Short-Term Storage: Carrots can be stored in the refrigerator for up to a month if stored properly. Cut off carrot greens, place carrots in a containers with lid and cover completely in water.
+                            Keep container in the refrigerator, changing the water ever 4-5 days.</p></td>
+                              </tr>
+                            </tbody>
+                          </table>
+                          </div>
+                        </div>
+
+                        {% elif prediction == 2%}
+                        <div class="container">
+                            <h2>PREDICTION RESULT</h2>
+                          <div class="table-responsive">
+                          <table class="table">
+                            <thead>
+                              <tr>
+                                  <th>Prediction</th>
+                                  <th>Fertilizer</th>
+                                  <th>Storage Method</th>
+                                  <th>Pesticide</th>
+                                  <th>Suggestion</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td>Coconut</td>
+                                <td>Granular fertilizer with a 2-1-1 ratio</td>
+                                <td>Constructed coconut shades</td>
+                                  <td>Neonicotinoid pesticides</td>
+                                <td><p class="lead">Under irrigated conditions, fertilizers can be applied in 3-4 equal split doses.
+                                    In the case of low-lying areas, apply fertilizers in one single dose after water
+                                    table recedes or in two split doses as conditions permit.
+                                    The application of organic materials such as forest leaves,
+                                    cattle manure, coir dust or coconut shredding at 10 kg per pit
+                                    in the first three years and 15-25 kg thereafter
+                                    will be useful to obtain better establishment of coconut palms
+                                    in sandy soils and in coastal situations.</p></td>
+                              </tr>
+                            </tbody>
+                          </table>
+                          </div>
+                        </div>
+                        {% elif prediction == 3%}
+                        <h2>Cotton</h2>
+                        <div class="container">
+                          <h2>PREDICTION RESULT</h2>
+                          <div class="table-responsive">
+                          <table class="table">
+                            <thead>
+                              <tr>
+                                  <th>Prediction</th>
+                                  <th>Fertilizer</th>
+                                  <th>Storage Method</th>
+                                  <th>Pesticide</th>
+                                  <th>Suggestion</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                  <td>Cotton</td>
+                                  <td>N-P-K 20-10-10 fertilizer </td>
+                                  <td>Free standing modules</td>
+                                  <td>Aldicarb</td>
+                                  <td>About two months after planting, when the plant is about a foot high,
+                                      flowers develop from buds called “squares." The flowers starts out white and
+                                      then turn red on the second day after they appear.
+                                      On the third day the petals fall off leaving behind undeveloped, flattened green pods called boll. .</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                          </div>
+                        </div>
+                        {% elif prediction == 4%}
+                        <h2>Groundnut</h2>
+                        <div class="container">
+                            <h2>PREDICTION RESULT</h2>
+                              <div class="table-responsive">
+                              <table class="table">
+                                <thead>
+                                  <tr>
+                                      <th>Prediction</th>
+                                      <th>Fertilizer</th>
+                                      <th>Storage Method</th>
+                                      <th>Pesticide</th>
+                                      <th>Suggestion</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <td>Groundnut</td>
+                                    <td><b>17:34:54 kg NPK</b> per hectre</td>
+                                    <td>As far as possible groundnut should be stored as pods rather than as kernels.</td>
+                                    <td>Apply chlorpyriphos 20 EC or Lindane 1.3% to control termites. </td>
+                                      <td><p class="lead">To achieve maximum yields, peanut fields should be kept as
+                                          free as possible from competing weeds. Plants should be supplied with additional
+                                          irrigation if dry conditions coincide with flowering and pod fill. Peanuts do not
+                                          generally require the addition of supplemental nitrogen as their roots form symbioses
+                                          bacteria which are capable of fixing atmospheric nitrogen in the soil. Peanuts require
+                                          calcium in the soil for good pod fill. the calcium in the soil is absorbed directly by the pods
+                                          in the pegging zone.
+                                          Calcium deficient soils may result in empty or poorly filled pods. </p></td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                              </div>
+                        </div>
+                        {% elif prediction == 5%}
+                        <div class="container">
+                            <h2>PREDICTION RESULT</h2>
+                              <div class="table-responsive">
+                              <table class="table">
+                                <thead>
+                                  <tr>
+                                      <th>Prediction</th>
+                                      <th>Fertilizer</th>
+                                      <th>Storage Method</th>
+                                      <th>Pesticide</th>
+                                      <th>Suggestion</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                      <td>Melon</td>
+                                      <td>5-10-10 kg NPK</td>
+                                      <td>Store in a cool dry place not more than 30 degrees</td>
+                                      <td>Cooper Spray</td>
+                                      <td>You can also apply liquid seaweed fertilizer when the foliage first emerges
+                                        and once the plants have flowered. Just before or as soon as the vines begin
+                                        to run, a second application of nitrogen is advisable. This is usually 30-60
+                                        days from planting. Use a 33-0-0 fertilizer at the rate of ½ pound per every
+                                        50 feet of the watermelon row. Water the fertilizer in well. Fertilize again
+                                        once the fruit has just emerged. You may also side dress the vines prior to
+                                        running with a 34-0-0 food at the rate of 1 pound per 100 feet of row or
+                                        calcium nitrate at 2 pound per 100 feet of row. Side dress again once the
+                                        fruit has just appeared on the vine.
+                                      </td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                              </div>
+                        </div>
+                        {% elif prediction == 6%}
+                        <div class="container">
+                            <h2>PREDICTION RESULT</h2>
+                              <div class="table-responsive">
+                              <table class="table">
+                                <thead>
+                                  <tr>
+                                      <th>Prediction</th>
+                                      <th>Fertilizer</th>
+                                      <th>Storage Method</th>
+                                      <th>Pesticide</th>
+                                      <th>Suggestion</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                      <td>Millet</td>
+                                      <td>40–50 lbs of nitrogen per acre (45–56 kg/ha) after planting, and another 40–50 lbs/acre (45–56 kg/ha)</td>
+                                      <td>Silos at room temperature</td>
+                                      <td>Seed treatment with Trichoderma harzianum (TH) and one spray of Pseudomonas fluorescens at the time
+                                          of flowering and second spray 10 days later can also control all three blast diseases.</td>
+                                      <td>Nitrogen is generally the most limiting nutrient in millet production. Rates of nitrogen
+                                          should be based on yield goals and cropping history. Excess nitrogen,
+                                          whether applied or residual, may result in lodging. Allow for nitrogen applied as manure
+                                          or other waste. Phosphorus and potassium should be applied as needed based on soil recommendations.
+                                          Drill row applications of fertilizer (except straight phosphorus fertilizers)
+                                          may cause seedling injury and are not recommended. A pH of 5.6 or higher is recommended for millet.
+                                      </td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                              </div>
+                        </div>
+                        {% elif prediction == 7%}
+                        <div class="container">
+                            <h2>PREDICTION RESULT</h2>
+                              <div class="table-responsive">
+                              <table class="table">
+                                <thead>
+                                  <tr>
+                                    <th>Prediction</th>
+                                    <th>Fertilizer</th>
+                                    <th>Storage Method</th>
+                                    <th>Pesticide</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                      <td>Potatoes</td>
+                                      <td>NPK 15-15-15</td>
+                                      <td>Potatoes are stored in a cool but not freezing (40°F/4.4°C) dark, humid place</td>
+                                      <td>Soil fumigant</td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                              </div>
+                        </div>
+                        {% elif prediction == 8%}
+                        <div class="container">
+                            <h2>PREDICTION RESULT</h2>
+                              <div class="table-responsive">
+                              <table class="table">
+                                <thead>
+                                  <tr>
+                                    <th>Prediction</th>
+                                    <th>Fertilizer</th>
+                                    <th>Storage Method</th>
+                                    <th>Pesticide</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                      <td>Rice</td>
+                                      <td>a basal dose of 750 kg of FYM enriched with fertilizer phosphorus (P at 25 kg/ha)</td>
+                                      <td>The best temperature to store grains, including rice, is 40°F or below; however, rice
+                                        stored at a constant 70° F with oxygen absorbers will store well for up to 10 years.</td>
+                                      <td>Carbaryl is a long-lasting, broad-spectrum pesticide that kills both insects and certain other invertebrates. Lambda-cyhalothrin,
+                                        malathion and zeta-cypermethrin are all broad-spectrum pesticides used on rice.
+                                      </td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                              </div>
+                        </div>
+
+                        {% elif prediction == 9%}
+                        <div class="container">
+                            <h2>PREDICTION RESULT</h2>
+                          <div class="table-responsive">
+                          <table class="table">
+                            <thead>
+                              <tr>
+                                <th>Prediction</th>
+                                <th>Fertilizer</th>
+                                <th>Storage Method</th>
+                                <th>Pesticide</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td>Vegetable</td>
+                                <td>100 pounds of a 5-10-10 fertilizer contains 5 pounds of nitrogen,
+                                    10 pounds of phosphorus and 10 pounds of potassium</td>
+                                <td>Cold and dry (32-40 F./0-4 C. and a 65 percent relative humidity)</td>
+                                <td>Diatomaceous earth as a natural pesticide</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                          </div>
+                        </div>
+                        {% elif prediction == 10%}
+                        <h2>Wheat</h2>
+                        <div class="container">
+                          <h2>PREDICTION RESULT</h2>
+                          <div class="table-responsive">
+                          <table class="table">
+                            <thead>
+                              <tr>
+                                <th>Prediction</th>
+                                <th>Fertilizer</th>
+                                <th>Storage Method</th>
+                                <th>Suggestion</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td>Wheat</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                              </tr>
+                            </tbody>
+                          </table>
+                          </div>
+                        </div>
+                        {% endif %}
+                        <p class="lead">
+                            <a class="btn btn-outline-success btn-lg" href="{{ url_for('home') }}" role="button">Log Out</a>
+                        </p>
+                </div>
+
+                </div>
+
+            </div>
+       </div>
+
+
+
+
+<!-- footer Section -->
+<div class="offset text-center">
+<footer class="container">
+  <p>&copy; <i>SpefacTech</i> 2019</p>
+</footer>
+</div>
+</body>
+
+{% endblock %}

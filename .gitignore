@@ -1,0 +1,19 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.env
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Local runtime data
+instance/
+*.db
+
+# IDE and OS files
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
